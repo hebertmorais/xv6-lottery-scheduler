@@ -1,8 +1,8 @@
 
-_nice: formato do arquivo elf32-i386
+_nice:     file format elf32-i386
 
 
-Desmontagem da seção .text:
+Disassembly of section .text:
 
 00000000 <main>:
 #include "types.h"
@@ -27,7 +27,7 @@ main(int argc, char **argv) {
   19:	8d 43 fe             	lea    -0x2(%ebx),%eax
   1c:	83 f8 01             	cmp    $0x1,%eax
   1f:	76 13                	jbe    34 <main+0x34>
-    printf(2, "usage: nice pid [new_priority]\n");
+    printf(2, "Você deve usar assim: nice pid [prioridade]\n");
   21:	56                   	push   %esi
   22:	56                   	push   %esi
   23:	68 f8 07 00 00       	push   $0x7f8
@@ -42,10 +42,7 @@ main(int argc, char **argv) {
   34:	83 ec 0c             	sub    $0xc,%esp
   37:	ff 76 04             	pushl  0x4(%esi)
   3a:	e8 81 02 00 00       	call   2c0 <atoi>
-  // if (pid >= NPROC || pid < 0) {
-  //   printf(2, "invalid pid my darling\n");
-  //   exit();
-  // }
+
   // query priority
   if (argc == 3) {
   3f:	83 c4 10             	add    $0x10,%esp
@@ -57,7 +54,7 @@ main(int argc, char **argv) {
       exit();
     }
 
-    printf(2, "change process priority from %d to %d\n", oldpriority, newpriority);
+    printf(2, "Mudou a prioridade de %d pra %d\n", oldpriority, newpriority);
   } else {
     int currentpriority = getpriority(pid);
   49:	83 ec 0c             	sub    $0xc,%esp
@@ -70,10 +67,10 @@ main(int argc, char **argv) {
       printf(2, "could not get priority\n");
       exit();
     }
-    printf(2, "pid %d has priority %d\n", pid, currentpriority);
+    printf(2, "pid %d tem prioridade de %d\n", pid, currentpriority);
   59:	50                   	push   %eax
   5a:	57                   	push   %edi
-  5b:	68 9c 08 00 00       	push   $0x89c
+  5b:	68 ac 08 00 00       	push   $0x8ac
   60:	6a 02                	push   $0x2
   62:	e8 39 04 00 00       	call   4a0 <printf>
   67:	83 c4 10             	add    $0x10,%esp
@@ -83,7 +80,7 @@ main(int argc, char **argv) {
       printf(2, "could not get priority\n");
   6f:	50                   	push   %eax
   70:	50                   	push   %eax
-  71:	68 84 08 00 00       	push   $0x884
+  71:	68 94 08 00 00       	push   $0x894
   76:	6a 02                	push   $0x2
   78:	e8 23 04 00 00       	call   4a0 <printf>
       exit();
@@ -99,10 +96,10 @@ main(int argc, char **argv) {
   93:	89 c3                	mov    %eax,%ebx
     if (newpriority > 31 || newpriority < 0) {
   95:	76 13                	jbe    aa <main+0xaa>
-      printf(2, "priority should be in range 0 up to 31\n");
+      printf(2, "a prioridade deve ir de 0 a 31\n");
   97:	53                   	push   %ebx
   98:	53                   	push   %ebx
-  99:	68 18 08 00 00       	push   $0x818
+  99:	68 28 08 00 00       	push   $0x828
   9e:	6a 02                	push   $0x2
   a0:	e8 fb 03 00 00       	call   4a0 <printf>
       exit();
@@ -117,18 +114,18 @@ main(int argc, char **argv) {
   b3:	83 c4 10             	add    $0x10,%esp
   b6:	85 c0                	test   %eax,%eax
   b8:	78 13                	js     cd <main+0xcd>
-    printf(2, "change process priority from %d to %d\n", oldpriority, newpriority);
+    printf(2, "Mudou a prioridade de %d pra %d\n", oldpriority, newpriority);
   ba:	53                   	push   %ebx
   bb:	50                   	push   %eax
-  bc:	68 40 08 00 00       	push   $0x840
+  bc:	68 70 08 00 00       	push   $0x870
   c1:	6a 02                	push   $0x2
   c3:	e8 d8 03 00 00       	call   4a0 <printf>
   c8:	83 c4 10             	add    $0x10,%esp
   cb:	eb 9d                	jmp    6a <main+0x6a>
-      printf(2, "could not set new priority\n");
+      printf(2, "não foi possivel mudar a prioridade\n");
   cd:	52                   	push   %edx
   ce:	52                   	push   %edx
-  cf:	68 68 08 00 00       	push   $0x868
+  cf:	68 48 08 00 00       	push   $0x848
   d4:	6a 02                	push   $0x2
   d6:	e8 c5 03 00 00       	call   4a0 <printf>
       exit();
@@ -734,7 +731,7 @@ printint(int fd, int xx, int base, int sgn)
  432:	31 d2                	xor    %edx,%edx
  434:	8d 7e 01             	lea    0x1(%esi),%edi
  437:	f7 f1                	div    %ecx
- 439:	0f b6 92 bc 08 00 00 	movzbl 0x8bc(%edx),%edx
+ 439:	0f b6 92 d0 08 00 00 	movzbl 0x8d0(%edx),%edx
   }while((x /= base) != 0);
  440:	85 c0                	test   %eax,%eax
     buf[i++] = digits[x % base];
@@ -1025,7 +1022,7 @@ printf(int fd, const char *fmt, ...)
  652:	31 ff                	xor    %edi,%edi
  654:	e9 8f fe ff ff       	jmp    4e8 <printf+0x48>
           s = "(null)";
- 659:	bb b4 08 00 00       	mov    $0x8b4,%ebx
+ 659:	bb c9 08 00 00       	mov    $0x8c9,%ebx
         while(*s != 0){
  65e:	b8 28 00 00 00       	mov    $0x28,%eax
  663:	e9 72 ff ff ff       	jmp    5da <printf+0x13a>
@@ -1046,7 +1043,7 @@ free(void *ap)
 
   bp = (Header*)ap - 1;
   for(p = freep; !(bp > p && bp < p->s.ptr); p = p->s.ptr)
- 671:	a1 6c 0b 00 00       	mov    0xb6c,%eax
+ 671:	a1 80 0b 00 00       	mov    0xb80,%eax
 {
  676:	89 e5                	mov    %esp,%ebp
  678:	57                   	push   %edi
@@ -1087,7 +1084,7 @@ free(void *ap)
     p->s.ptr = bp;
  6ad:	89 08                	mov    %ecx,(%eax)
   freep = p;
- 6af:	a3 6c 0b 00 00       	mov    %eax,0xb6c
+ 6af:	a3 80 0b 00 00       	mov    %eax,0xb80
 }
  6b4:	5b                   	pop    %ebx
  6b5:	5e                   	pop    %esi
@@ -1119,7 +1116,7 @@ free(void *ap)
     p->s.size += bp->s.size;
  6e7:	03 53 fc             	add    -0x4(%ebx),%edx
   freep = p;
- 6ea:	a3 6c 0b 00 00       	mov    %eax,0xb6c
+ 6ea:	a3 80 0b 00 00       	mov    %eax,0xb80
     p->s.size += bp->s.size;
  6ef:	89 50 04             	mov    %edx,0x4(%eax)
     p->s.ptr = bp->s.ptr;
@@ -1152,7 +1149,7 @@ malloc(uint nbytes)
   nunits = (nbytes + sizeof(Header) - 1)/sizeof(Header) + 1;
  709:	8b 45 08             	mov    0x8(%ebp),%eax
   if((prevp = freep) == 0){
- 70c:	8b 15 6c 0b 00 00    	mov    0xb6c,%edx
+ 70c:	8b 15 80 0b 00 00    	mov    0xb80,%edx
   nunits = (nbytes + sizeof(Header) - 1)/sizeof(Header) + 1;
  712:	8d 78 07             	lea    0x7(%eax),%edi
  715:	c1 ef 03             	shr    $0x3,%edi
@@ -1189,7 +1186,7 @@ malloc(uint nbytes)
       return (void*)(p + 1);
     }
     if(p == freep)
- 751:	39 05 6c 0b 00 00    	cmp    %eax,0xb6c
+ 751:	39 05 80 0b 00 00    	cmp    %eax,0xb80
  757:	89 c2                	mov    %eax,%edx
  759:	75 ed                	jne    748 <malloc+0x48>
   p = sbrk(nu * sizeof(Header));
@@ -1208,7 +1205,7 @@ malloc(uint nbytes)
  775:	50                   	push   %eax
  776:	e8 f5 fe ff ff       	call   670 <free>
   return freep;
- 77b:	8b 15 6c 0b 00 00    	mov    0xb6c,%edx
+ 77b:	8b 15 80 0b 00 00    	mov    0xb80,%edx
       if((p = morecore(nunits)) == 0)
  781:	83 c4 10             	add    $0x10,%esp
  784:	85 d2                	test   %edx,%edx
@@ -1237,7 +1234,7 @@ malloc(uint nbytes)
         p->s.size = nunits;
  7a4:	89 78 04             	mov    %edi,0x4(%eax)
       freep = prevp;
- 7a7:	89 15 6c 0b 00 00    	mov    %edx,0xb6c
+ 7a7:	89 15 80 0b 00 00    	mov    %edx,0xb80
 }
  7ad:	8d 65 f4             	lea    -0xc(%ebp),%esp
       return (void*)(p + 1);
@@ -1251,13 +1248,13 @@ malloc(uint nbytes)
  7b8:	90                   	nop
  7b9:	8d b4 26 00 00 00 00 	lea    0x0(%esi,%eiz,1),%esi
     base.s.ptr = freep = prevp = &base;
- 7c0:	c7 05 6c 0b 00 00 70 	movl   $0xb70,0xb6c
+ 7c0:	c7 05 80 0b 00 00 84 	movl   $0xb84,0xb80
  7c7:	0b 00 00 
- 7ca:	c7 05 70 0b 00 00 70 	movl   $0xb70,0xb70
+ 7ca:	c7 05 84 0b 00 00 84 	movl   $0xb84,0xb84
  7d1:	0b 00 00 
     base.s.size = 0;
- 7d4:	b8 70 0b 00 00       	mov    $0xb70,%eax
- 7d9:	c7 05 74 0b 00 00 00 	movl   $0x0,0xb74
+ 7d4:	b8 84 0b 00 00       	mov    $0xb84,%eax
+ 7d9:	c7 05 88 0b 00 00 00 	movl   $0x0,0xb88
  7e0:	00 00 00 
  7e3:	e9 44 ff ff ff       	jmp    72c <malloc+0x2c>
  7e8:	90                   	nop

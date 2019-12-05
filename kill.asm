@@ -1,8 +1,8 @@
 
-_kill: formato do arquivo elf32-i386
+_kill:     file format elf32-i386
 
 
-Desmontagem da seção .text:
+Disassembly of section .text:
 
 00000000 <main>:
 #include "stat.h"

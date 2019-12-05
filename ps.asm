@@ -1,8 +1,8 @@
 
-_ps: formato do arquivo elf32-i386
+_ps:     file format elf32-i386
 
 
-Desmontagem da seção .text:
+Disassembly of section .text:
 
 00000000 <main>:
 void sort(proc ptable[MAX_PROC]) {

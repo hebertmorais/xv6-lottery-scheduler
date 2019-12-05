@@ -1,8 +1,8 @@
 
-_forktest: formato do arquivo elf32-i386
+_forktest:     file format elf32-i386
 
 
-Desmontagem da seção .text:
+Disassembly of section .text:
 
 00000000 <main>:
   printf(1, "fork test OK\n");

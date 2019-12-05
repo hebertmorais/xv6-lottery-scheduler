@@ -1,8 +1,8 @@
 
-bootblock.o: formato do arquivo elf32-i386
+bootblock.o:     file format elf32-i386
 
 
-Desmontagem da seção .text:
+Disassembly of section .text:
 
 00007c00 <start>:
 # with %cs=0 %ip=7c00.

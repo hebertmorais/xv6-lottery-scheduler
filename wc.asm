@@ -1,8 +1,8 @@
 
-_wc: formato do arquivo elf32-i386
+_wc:     file format elf32-i386
 
 
-Desmontagem da seção .text:
+Disassembly of section .text:
 
 00000000 <main>:
   printf(1, "%d %d %d %s\n", l, w, c, name);

@@ -1,8 +1,8 @@
 
-_grep: formato do arquivo elf32-i386
+_grep:     file format elf32-i386
 
 
-Desmontagem da seção .text:
+Disassembly of section .text:
 
 00000000 <main>:
   }

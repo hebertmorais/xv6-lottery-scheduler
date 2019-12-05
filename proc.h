@@ -53,7 +53,6 @@ struct proc {
   int usage;
   int mapcalls[32];            // Map the systemcall id to the number of calls
   int schedulepriority;
-  int tickets;
 };
 
 // Process memory is laid out contiguously, low addresses first:

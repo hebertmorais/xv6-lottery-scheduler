@@ -1,8 +1,8 @@
 
-_ls: formato do arquivo elf32-i386
+_ls:     file format elf32-i386
 
 
-Desmontagem da seção .text:
+Disassembly of section .text:
 
 00000000 <main>:
   close(fd);
